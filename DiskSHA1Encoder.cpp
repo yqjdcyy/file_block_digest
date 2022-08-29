@@ -59,6 +59,7 @@ char* jstringToChar(JNIEnv* env, jstring jstr) {
     return rtn;
 }
 
+extern "C" {
 JNIEXPORT jstring JNICALL Java_DiskSHA1Encoder_encode(JNIEnv *env, jobject obj, jstring path){
 
   string content = Readfile(jstringToChar(env, path));
@@ -72,4 +73,5 @@ JNIEXPORT jstring JNICALL Java_DiskSHA1Encoder_encode(JNIEnv *env, jobject obj, 
   }
 
   return charTojstring(env, response.c_str());
+}
 }
